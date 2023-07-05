@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mongodb:
+    container_name: ${MONGO_DB_NAME}
+    image: mongo:6.0
+    volumes:
+      - poke-vol:/data/db
+    ports:
+      - ${MONGO_PORT_EX}:${MONGO_PORT_IN}
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    command: ["--auth"]
+
+volumes:
+  poke-vol:
+    external: false
