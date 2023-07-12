@@ -1,5 +1,5 @@
-FROM node:19.2.0-alpine3.17
-
+FROM --platform=$BUILDPLATFORM node:19.2.0-alpine3.17
+RUN echo "I am running on $BUILDPLATFORM, building for $TARGETPLATFORM" > /log
 WORKDIR /app
 
 COPY package.json ./
